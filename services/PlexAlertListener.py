@@ -215,16 +215,29 @@ class PlexAlertListener(threading.Thread):
 						self.logger.debug("Uploading image")
 						thumbUrl = uploadImage(self.server.url(thumb, True))
 						setKey(thumb, thumbUrl)
-				activity: models.discord.Activity = {
-					"details": title[:128],
-					"state": stateText[:128],
-					"assets": {
-						"large_text": largeText,
-						"large_image": thumbUrl or "logo",
-						"small_text": state.capitalize(),
-						"small_image": state,
-					},
-				}
+				if state != "playing":
+					activity: models.discord.Activity = {
+						"details": title[:128],
+						"state": stateText[:128],
+						"assets": {
+							"large_text": largeText,
+							"large_image": thumbUrl or "logo",
+							"small_text": state.capitalize(),
+							"small_image": state,
+						},
+					}
+				else:
+					activity: models.discord.Activity = {
+						"details": title[:128],
+						"state": stateText[:128],
+						"assets": {
+							"large_text": largeText,
+							"large_image": thumbUrl or "logo",
+							"small_text": "i like these things btw 🥺",
+							"small_image": "https://cdn.discordapp.com/emojis/973130744190869575.webp",
+						},
+					}
+           
 				if config["display"]["buttons"]:
 					guidTags: list[GuidTag] = []
 					if mediaType == "movie":
