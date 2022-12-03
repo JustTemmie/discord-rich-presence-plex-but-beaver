@@ -1,5 +1,7 @@
 # Discord Rich Presence for Plex
 
+This script is unmodified from the [original script](https://github.com/phin05/discord-rich-presence-plex) except for the part where i turned the "playing" icon into a beaver :blush:
+
 ![Showcase](https://user-images.githubusercontent.com/59180111/168054648-af0590fd-9bd7-42d0-91b2-d7974643debd.png)
 
 A Python script that displays your [Plex](https://www.plex.tv/) status on [Discord](https://discord.com/) using [Rich Presence](https://discord.com/developers/docs/rich-presence/how-to).
